@@ -5,13 +5,16 @@
 
 int main()
 {
-    char group[SIZE],name[SIZE],surname[SIZE];
-    double x1,x2,y,delta,bin,**A;
-    int steps,N;
+    char group[SIZE];
+    char name[SIZE];
+    char surname[SIZE];
+    double x1, x2, y, delta, bin, **A;
+    int steps, N;
 
     FILE* input=fopen("input.txt", "r");
     FILE* output=fopen("output.txt", "w");
     FILE* binary=fopen("binary.txt", "w+b");
+    
     fscanf(input,"%lf %lf %d %lf", &x1, &x2, &steps, &delta);
     fgets(surname,SIZE, input);
     fgets(group,SIZE, input);
@@ -25,11 +28,13 @@ int main()
     {
         delta=(x2-x1)/(steps-1);
     }
+    
     fclose(input);
-
+    
         fprintf(output,"\n******************************************");
         fprintf(output,"\n  N           X            F(X)           ");
         fprintf(output,"\n******************************************");
+    
     fwrite(&steps, sizeof(int), 1, binary);
     
     for(int i=0; i<steps; i++)
